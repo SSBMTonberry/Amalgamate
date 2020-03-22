@@ -32,3 +32,8 @@ Amalgamate uses portions of [JUCE][2], licensed separately.
 [3]: http://developer.kde.org/~wheeler/taglib.html "TagLib"
 [4]: http://vinniefalco.com "Vinnie Falco's Home Page"
 [5]: http://www.opensource.org/licenses/MIT "MIT License"
+
+### Example use when used on Tileson
+```shell script
+./amalgamate -w "*.hpp" ./include/tileson.hpp ./single_include/tileson.hpp
+```
