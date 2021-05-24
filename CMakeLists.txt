@@ -23,13 +23,22 @@ elseif(WIN32)
     endif()
 endif()
 
-set(SOURCE_FILES Amalgamate.cpp juce_core_amalgam.cpp)
-
+if(AMAL_APPLE)
+    set(SOURCE_FILES Amalgamate.cpp juce_core_amalgam.cpp juce_core_amalgam.mm)
+else()
+    set(SOURCE_FILES Amalgamate.cpp juce_core_amalgam.cpp)
+endif()
 
 add_executable(amalgamate ${SOURCE_FILES})
 
 if(AMAL_WINDOWS)
 
+elseif(AMAL_APPLE)
+    target_link_libraries(amalgamate pthread dl -ObjC
+            "-framework Cocoa"
+            "-framework AppKit"
+            "-framework CoreFoundation"
+            "-framework Foundation")
 else()
     target_link_libraries(amalgamate pthread dl)
 endif()
